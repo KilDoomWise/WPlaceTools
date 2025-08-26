@@ -27,7 +27,7 @@ jobs:
 
       - name: Archive Chrome extension
         run: |
-          cd dist/chrome
+          cd .output/chrome-mv3
           zip -r ../../chrome-extension.zip .
 
       - name: Build Firefox extension
@@ -35,7 +35,7 @@ jobs:
 
       - name: Archive Firefox extension
         run: |
-          cd dist/firefox
+          cd .output/firefox-mv3
           zip -r ../../firefox-extension.zip .
 
       - name: Upload artifacts
