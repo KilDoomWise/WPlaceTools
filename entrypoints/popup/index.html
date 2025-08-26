@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WPlaceTools</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-zinc-950 text-white font-montserrat w-80 h-[28rem] m-0 p-0 overflow-hidden">
+  <div id="app" class="h-full relative">
+    <div id="viewContainer" class="relative w-full h-full">
+      <div id="mainView" class="absolute inset-0 p-6 bg-zinc-950 transform transition-transform duration-300 ease-out flex flex-col">
+        <div class="text-center mb-6">
+          <h1 class="text-xl font-bold text-white mb-2">WPlaceTools</h1>
+          <div id="greeting" class="text-lg text-zinc-300 mb-6">
+            Привет, <span id="username" class="text-white font-semibold">...</span>!
+          </div>
+        </div>
+        <div class="space-y-3">
+          <button id="accountBtn" class="w-full bg-white hover:bg-zinc-100 text-black py-3 px-4 rounded-lg transition-all duration-200 font-medium shadow-lg border border-zinc-800">
+            👤 Аккаунт
+          </button>
+          <button id="settingsBtn" class="w-full bg-zinc-900 hover:bg-zinc-800 text-white py-3 px-4 rounded-lg transition-all duration-200 font-medium border border-zinc-800">
+            ⚙️ Настройки
+          </button>
+        </div>
+        <div class="mt-auto pt-4">
+          <div class="text-center space-y-1 mb-3">
+            <div class="text-zinc-500 text-xs">
+              Версия <span id="extensionVersion">1.0.0</span> • Билд <span id="buildDate">...</span>
+            </div>
+            <div class="text-zinc-600 text-xs">
+              WXT <span id="wxtVersion">0.17.0</span>
+            </div>
+          </div>
+          <div class="text-center space-y-2">
+            <div class="text-zinc-400 text-xs">
+              Разработано командой RU_WPLACE
+            </div>
+            <button id="telegramBtn" class="inline-flex items-center space-x-2 bg-zinc-800 hover:bg-zinc-700 text-white px-3 py-1.5 rounded-lg transition-all duration-200 text-xs font-medium">
+              <svg width="16" height="16" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="14" fill="url(#paint0_linear_87_7225)"/>
+                <path d="M22.9866 10.2088C23.1112 9.40332 22.3454 8.76755 21.6292 9.082L7.36482 15.3448C6.85123 15.5703 6.8888 16.3483 7.42147 16.5179L10.3631 17.4547C10.9246 17.6335 11.5325 17.541 12.0228 17.2023L18.655 12.6203C18.855 12.4821 19.073 12.7665 18.9021 12.9426L14.1281 17.8646C13.665 18.3421 13.7569 19.1512 14.314 19.5005L19.659 22.8523C20.2585 23.2282 21.0297 22.8506 21.1418 22.1261L22.9866 10.2088Z" fill="white"/>
+                <defs>
+                  <linearGradient id="paint0_linear_87_7225" x1="16" y1="2" x2="16" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#37BBFE"/>
+                    <stop offset="1" stop-color="#007DBB"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <span>Telegram</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="accountView" class="absolute inset-0 bg-zinc-950 transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="bg-zinc-900 border-b border-zinc-800 p-4">
+          <div class="flex items-center">
+            <button id="backBtn" class="text-white hover:text-zinc-300 mr-3 text-lg transition-colors duration-200">←</button>
+            <h2 class="text-lg font-bold text-white">Аккаунт</h2>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto p-4">
+          <div id="accountDetails" class="space-y-4"></div>
+          <div class="mt-4 pt-3 border-t border-zinc-800">
+            <button id="switchAccountBtn" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2.5 px-4 rounded-lg transition-all duration-200 font-medium shadow-lg">
+              🔄 Сменить аккаунт
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="settingsView" class="absolute inset-0 bg-zinc-950 transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="bg-zinc-900 border-b border-zinc-800 p-4">
+          <div class="flex items-center">
+            <button id="backBtn2" class="text-white hover:text-zinc-300 mr-3 text-lg transition-colors duration-200">←</button>
+            <h2 class="text-lg font-bold text-white">Настройки</h2>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6">
+          <div class="space-y-4">
+            <div class="text-center text-zinc-400 py-8">
+              Настройки будут добавлены позже
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="loadingView" class="absolute inset-0 p-6 bg-zinc-950">
+        <div class="text-center">
+          <div class="text-white mb-4 text-4xl animate-pulse">⏳</div>
+          <div class="text-zinc-300">Загрузка...</div>
+        </div>
+      </div>
+      <div id="loginView" class="absolute inset-0 p-6 bg-zinc-950 transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="text-center space-y-4">
+          <div class="text-yellow-400 text-4xl mb-4">🔐</div>
+          <p class="text-white">Нужно авторизоваться</p>
+          <button id="loginBtn" class="bg-white hover:bg-zinc-100 text-black px-6 py-3 rounded-lg transition-all duration-200 font-medium shadow-lg">
+            Войти
+          </button>
+        </div>
+      </div>
+      <div id="noTabView" class="absolute inset-0 p-6 bg-zinc-950 transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="text-center space-y-4">
+          <div class="text-emerald-400 text-4xl mb-4">🌍</div>
+          <p class="text-white">Откройте вкладку с wplace.live</p>
+          <button id="openBtn" class="bg-white hover:bg-zinc-100 text-black px-6 py-3 rounded-lg transition-all duration-200 font-medium shadow-lg">
+            Открыть wplace.live
+          </button>
+        </div>
+      </div>
+      <div id="errorView" class="absolute inset-0 p-6 bg-zinc-950 transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="text-center space-y-4">
+          <div class="text-red-400 text-4xl mb-4">❌</div>
+          <p id="errorMessage" class="text-zinc-300 text-sm"></p>
+          <div class="space-y-2">
+            <button id="retryBtn" class="w-full bg-white hover:bg-zinc-100 text-black px-6 py-3 rounded-lg transition-all duration-200 font-medium shadow-lg">
+              Повторить
+            </button>
+            <button id="detailsBtn" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-2 rounded-lg transition-all duration-200 font-medium text-sm" style="display: none;">
+              📋 Подробнее
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/entrypoints/popup/main.js"></script>
+</body>
+</html>
