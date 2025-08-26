@@ -1,0 +1,48 @@
+name: Build Browser Extensions
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Chrome extension
+        run: npm run build
+
+      - name: Archive Chrome extension
+        run: |
+          cd dist/chrome
+          zip -r ../../chrome-extension.zip .
+
+      - name: Build Firefox extension
+        run: npm run build:firefox
+
+      - name: Archive Firefox extension
+        run: |
+          cd dist/firefox
+          zip -r ../../firefox-extension.zip .
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-extensions
+          path: |
+            chrome-extension.zip
+            firefox-extension.zip
