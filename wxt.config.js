@@ -1,3 +1,4 @@
+// BY RU_WPLACE
 import { defineConfig } from 'wxt';
 
 export default defineConfig({
